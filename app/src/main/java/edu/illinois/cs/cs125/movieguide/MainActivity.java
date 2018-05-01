@@ -12,6 +12,9 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+
 
 public class MainActivity extends AppCompatActivity{
     private static final String TAG = "MP7:MovieGuide";
@@ -39,6 +42,30 @@ private Toolbar mtoolbar;
         for (int i = 0; i< 25; i++) {
             movies.add(new Movie());
         }
+
+        RestAdapter restAdapter = new RestAdapter.Builder();
+        .setEndpoint("http://api.themovieb.org/3");
+        .setRequestInterceptor(); {
+            @Override
+            public void intercept(RequestFacade request) {
+                request.addEncodedQueryParam("api_Key", "7cf96f91c757016564c0f13821773bbf");
+            }
+        })
+        .SetLogLevel(RestAdapter.Loglevel.FULL)
+        .build();
+         MoviesApiService service = restAdapter.create(MoviesApiService.class);
+         service.getPopularMovies(new Callback<Movie.MovieResult>() {
+                                      @Override
+                                      public void success(Movie.MovieResult movieResult, Resonse response) {
+                                          mAdapter.setMovieList(mvoieResult.getResults());
+                                      }
+
+                                      @Override
+                                      public void failure(RetrofitError error) {
+                                          error.printStackTrace();
+                                      }
+                                  });
+
     mAdapter.setMovieList(movies);
     }
     }
