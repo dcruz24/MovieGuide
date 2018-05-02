@@ -1,14 +1,15 @@
 package edu.illinois.cs.cs125.movieguide;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
     public class Movie {
         private String title;
+        @SerializedName("poster_path")
         private String poster;
+        @SerializedName("overview")
         private String description;
+        @SerializedName("backdrop_path")
         private String backdrop;
 
         public Movie() {
@@ -20,7 +21,7 @@ import java.util.List;
             this.title = title;
         }
         public String getPoster(){
-            return "http://t2.gstatic.com/images?q=tbn:ANd9GcQW3LbpT94mtUG1PZIIzJNxmFX399wr_NcvoppJ82k7z99Hx6in";
+            return "https://image.tmdb.org/t/p/w500" + poster;
         }
 
         public void setPoster(String poster) {
@@ -33,7 +34,6 @@ import java.util.List;
         public void setDescription(String description) {
             this.description = description;
         }
-
         public String getBackdrop() {
             return "https://image.tmdb.org/t/p/w500" + backdrop;
         }
