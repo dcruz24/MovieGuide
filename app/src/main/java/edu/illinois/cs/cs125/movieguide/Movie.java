@@ -21,7 +21,7 @@ import java.util.List;
             this.title = title;
         }
         public String getPoster(){
-            return "https://image.tmdb.org/t/p/w500" + poster;
+            return "https://image.tmdb.org/t/p/w500/" + poster;
         }
 
         public void setPoster(String poster) {
@@ -35,7 +35,7 @@ import java.util.List;
             this.description = description;
         }
         public String getBackdrop() {
-            return "https://image.tmdb.org/t/p/w500" + backdrop;
+            return "https://image.tmdb.org/t/p/w500/" + backdrop;
         }
 
         public void setBackdrop(String backdrop) {

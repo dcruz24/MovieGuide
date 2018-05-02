@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
@@ -27,8 +26,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar mtoolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mtoolbar);
-        mRecyclerView= findViewById(R.id.recyclerView);
+        //setSupportActionBar(mtoolbar);
+        mRecyclerView= findViewById(R.id.recycler_View);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mAdapter = new MoviesAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
@@ -42,11 +41,11 @@ public class MainActivity extends AppCompatActivity{
 
         private void getPopularMovies() {
 RestAdapter restAdapter = new RestAdapter.Builder()
-        .setEndpoint("http://api.themovieb.org/3")
+        .setEndpoint("https://api.themoviedb.org/3")
         .setRequestInterceptor(new RequestInterceptor() {
             @Override
             public void intercept(RequestFacade request) {
-            request.addEncodedPathParam("api_Key", "7cf96f91c757016564c0f13821773bbf");
+            request.addEncodedQueryParam("api_key", "7cf96f91c757016564c0f13821773bbf");
             }
             })
         .setLogLevel(RestAdapter.LogLevel.FULL)
