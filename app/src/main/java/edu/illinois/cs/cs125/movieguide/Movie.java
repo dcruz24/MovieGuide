@@ -7,31 +7,12 @@ import java.util.List;
 
     public class Movie {
         private String title;
-        @SerializedName("poster_path")
         private String poster;
-        @SerializedName("overview")
         private String description;
-        @SerializedName("backdrop_path")
         private String backdrop;
 
         public Movie() {
         }
-        protected Movie(Parcel in) {
-            title = in.readString();
-            poster = in.readString();
-            description = in.readString();
-            backdrop = in.readString();
-        }
-        public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
-            @Override
-            public Movie createFromParcel(Parcel in) {
-                return new Movie(in);
-            }
-            @Override
-            public Movie[] newArray(int size) {
-                return new Movie[size];
-            }
-        };
         public String getTitle() {
             return title;
         }
@@ -39,7 +20,7 @@ import java.util.List;
             this.title = title;
         }
         public String getPoster(){
-            return "https://image.tmdb.org/t/p/w500" + poster;
+            return "http://t2.gstatic.com/images?q=tbn:ANd9GcQW3LbpT94mtUG1PZIIzJNxmFX399wr_NcvoppJ82k7z99Hx6in";
         }
 
         public void setPoster(String poster) {
@@ -60,17 +41,6 @@ import java.util.List;
         public void setBackdrop(String backdrop) {
             this.backdrop = backdrop;
             }
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-          @Override
-          public void writeToParcel(Parcel parcel, int i) {
-            parcel.writeString(title);
-              parcel.writeString(poster);
-              parcel.writeString(description);
-              parcel.writeString(backdrop);
-          }
             public static class MovieResult {
             private List<Movie> results;
             public List<Movie> getResults() {

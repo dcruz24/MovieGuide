@@ -23,16 +23,7 @@ public MoviesAdapter(Context context) {
     @Override
     public MainActivity.MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = mInflater.inflate(R.layout.displayrow_movie, parent, false);
-    final MainActivity.MovieViewHolder viewHolder = new MainActivity.MovieViewHolder(view);
-    view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick (View view){
-                int position = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(mContext, MovieDetailActivity.class);
-                intent.putExtra(MovieDetailActivity.EXTRA_MOVIE,mMovieList.get(position))
-                mContext.startActivity(intent);
-            }
-        });
+        MainActivity.MovieViewHolder viewHolder = new MainActivity.MovieViewHolder(view);
     return viewHolder;
 }
     @Override
